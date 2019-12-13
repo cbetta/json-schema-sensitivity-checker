@@ -2,6 +2,7 @@
 
 [![npm
 version](https://badge.fury.io/js/json-schema-sensitivity-checker.svg)](https://badge.fury.io/js/json-schema-sensitivity-checker)
+![ci status](https://github.com/cbetta/json-schema-sensitivity-checker/workflows/Node%20CI/badge.svg)
 
 This CLI allows you to provide a JSONPath expression and run
 [`alex`](https://alexjs.com) against any matching lines.
