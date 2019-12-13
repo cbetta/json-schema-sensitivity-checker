@@ -1,0 +1,37 @@
+{
+  "name": "json-schema-sensitivity-checker",
+  "version": "1.0.0",
+  "description": "Check the sensitiviry of your JSON Schema (including OpenAPI!) documents",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint *.js",
+    "lint-fix": "eslint --fix *.js"
+  },
+  "bin": {
+    "json-schema-sensitiviy-checker": "bin.js"
+  },
+  "keywords": [
+    "openapi",
+    "oas",
+    "check",
+    "sensitivity"
+  ],
+  "author": "Cristiano Betta <cristiano@betta.io>",
+  "license": "MIT",
+  "dependencies": {
+    "alex": "^8.1.0",
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1",
+    "jsonpath": "^1.0.2",
+    "remark": "^11.0.2",
+    "remark-plain-text": "^0.2.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "eslint": "^6.6.0",
+    "eslint-plugin-prettier": "^3.1.1"
+  }
+}
