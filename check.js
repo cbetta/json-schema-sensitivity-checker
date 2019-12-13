@@ -14,11 +14,11 @@ const check = async (item, options = {}) => {
 
         let errors = [];
         if (options.text) {
-          errors = alex.text(result.contents).messages;
+          errors = alex.text(result.contents, options.config).messages;
         } else if (options.html) {
-          errors = alex.html(result.contents).messages;
+          errors = alex.html(result.contents, options.config).messages;
         } else {
-          errors = alex.markdown(result.contents).messages;
+          errors = alex.markdown(result.contents, options.config).messages;
         }
         resolve({ errors, plain: result.contents.trim(), ...item });
       });

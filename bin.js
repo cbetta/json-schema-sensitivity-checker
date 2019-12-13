@@ -32,6 +32,10 @@ function loader(filename) {
     .option("-d, --diff", "ignore unchanged lines (affects Travis only)")
     .option("-j, --json-path [path]", "specify a jsonpath expression to match")
     .option(
+      "-c, --config [path]",
+      "specify a JSON formatted Alex config to pass to every match"
+    )
+    .option(
       "-f, --fields [fields]",
       "specify a comma separated list of field names to match"
     )
@@ -43,7 +47,8 @@ function loader(filename) {
     quiet: program.quiet,
     text: program.text,
     html: program.html,
-    diff: program.diff
+    diff: program.diff,
+    config: {}
   };
 
   const data = loader(program.args[0]);
@@ -55,6 +60,10 @@ function loader(filename) {
     jsonPath = program.fields.split(",");
   }
 
+  if (program.config) {
+    options.config = JSON.parse(fs.readFileSync(program.config));
+  }
+
   const results = await checker(data, jsonPath, options);
   if (results.length === 0) {
     process.exit(0);
@@ -62,12 +71,19 @@ function loader(filename) {
 
   for (let result of results) {
     for (let error of result.errors) {
+      const before = result.plain.substring(0, error.location.start.offset);
+      const word = result.plain.substring(
+        error.location.start.offset,
+        error.location.end.offset
+      );
+      const after = result.plain.substring(error.location.end.offset);
+
       console.log(`
 ${chalk.yellow(result.path)}
 ${chalk.green(error.message)}
 ${chalk.grey(`${error.source}, ${error.ruleId}`)}
 
-${result.value.replace(error.actual, chalk.red(error.actual))}
+${before}${chalk.red(word)}${after}
       `);
     }
   }

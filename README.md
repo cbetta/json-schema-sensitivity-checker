@@ -45,6 +45,6 @@ Options:
   -l, --html              treat input as html (not markdown)
   -d, --diff              ignore unchanged lines (affects Travis only)
   -j, --json-path [path]  specify a jsonpath expression to match
-  -f, --fields [fields]   specify a comma separated list of field names to match
-  -h, --help              output usage information
+  -c, --config [path]     specify a JSON formatted Alex config to pass to every match
+  -f, --fields [fields]   specify a comma separated l
 ```
