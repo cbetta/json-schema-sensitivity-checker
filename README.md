@@ -1,5 +1,8 @@
 # json-schema-sensitivity-checker
 
+[![npm
+version](https://badge.fury.io/js/json-schema-sensitivity-checker.svg)](https://badge.fury.io/js/json-schema-sensitivity-checker)
+
 This CLI allows you to provide a JSONPath expression and run
 [`alex`](https://alexjs.com) against any matching lines.
 
