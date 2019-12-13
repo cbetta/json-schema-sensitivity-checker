@@ -1,7 +1,7 @@
 {
   "name": "json-schema-sensitivity-checker",
-  "version": "1.0.0",
-  "description": "Check the sensitiviry of your JSON Schema (including OpenAPI!) documents",
+  "version": "1.0.1",
+  "description": "Check the sensitivity of your JSON Schema (including OpenAPI!) documents",
   "main": "index.js",
   "scripts": {
     "test": "jest",
