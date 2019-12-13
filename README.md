@@ -1,11 +1,12 @@
 # json-schema-sensitivity-checker
 
-This CLI allows you to provide a JSONPath expression and run [`alex`] against any matching lines.
+This CLI allows you to provide a JSONPath expression and run
+[`alex`](https://alexjs.com) against any matching lines.
 
 > This tool is currently in alpha and has primarily been tested against OpenAPI
 > files. PRs are welcome!
 
-This project is very much inspired by and based on the work done on the 
+This project is very much inspired by and based on the work done on the
 [`json-schema-spell-checker`](https://github.com/mheap/json-schema-spell-checker)
 by Michael Heap.
 
