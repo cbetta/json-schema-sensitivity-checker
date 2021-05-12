@@ -10,10 +10,7 @@ const buildVersion = require("./package.json").version;
 // const alex = require('alex')
 
 function loader(filename) {
-  const suffix = filename
-    .split(".")
-    .pop()
-    .toLowerCase();
+  const suffix = filename.split(".").pop().toLowerCase();
 
   // If it ends in .yml
   if (["yml", "yaml"].indexOf(suffix) !== -1) {
@@ -39,29 +36,35 @@ function loader(filename) {
       "-f, --fields [fields]",
       "specify a comma separated list of field names to match"
     )
-    .usage("[options] source-file")
+    .arguments("[options] source-file")
     .parse(process.argv);
 
-  const options = {
-    why: program.why,
-    quiet: program.quiet,
-    text: program.text,
-    html: program.html,
-    diff: program.diff,
-    config: {}
-  };
 
+  if (program.args.length < 1) {
+    return program.help();
+  }
   const data = loader(program.args[0]);
 
+  const programOpts = program.opts();
+
+  const options = {
+    why: programOpts.why,
+    quiet: programOpts.quiet,
+    text: programOpts.text,
+    html: programOpts.html,
+    diff: programOpts.diff,
+    config: {},
+  };
+
   let jsonPath = "";
-  if (program.jsonPath) {
-    jsonPath = program.jsonPath;
+  if (programOpts.jsonPath) {
+    jsonPath = programOpts.jsonPath;
   } else {
-    jsonPath = program.fields.split(",");
+    jsonPath = programOpts.fields.split(",");
   }
 
-  if (program.config) {
-    options.config = JSON.parse(fs.readFileSync(program.config));
+  if (programOpts.config) {
+    options.config = JSON.parse(fs.readFileSync(programOpts.config));
   }
 
   const results = await checker(data, jsonPath, options);
