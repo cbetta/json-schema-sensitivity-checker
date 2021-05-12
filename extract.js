@@ -8,12 +8,12 @@ const extract = (document, fields = []) => {
   if (typeof fields == "string") {
     path = fields;
   } else {
-    fields = fields.map(f => `'${f}'`);
+    fields = fields.map((f) => `'${f}'`);
     path = `$..[${fields.join(",")}]`;
   }
 
   const nodes = jp.nodes(document, path);
-  return nodes.map(n => {
+  return nodes.map((n) => {
     n.path = jp.stringify(n.path);
     return n;
   });

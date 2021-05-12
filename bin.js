@@ -39,7 +39,6 @@ function loader(filename) {
     .arguments("[options] source-file")
     .parse(process.argv);
 
-
   if (program.args.length < 1) {
     return program.help();
   }
