@@ -1,4 +1,4 @@
-const extract = require("./extract");
+import extract from "./extract"
 
 const json = [
   {

@@ -1,4 +1,4 @@
-const check = require("./check");
+import check from "./check";
 
 test("no errors (plain)", async () => {
   const item = { value: "This doesn't have any errors" };

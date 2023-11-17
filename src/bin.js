@@ -1,13 +1,12 @@
 #!/usr/bin/env node
+":" //# comment; exec /usr/bin/env node --experimental-modules "$0" "$@"
 
-const checker = require(".");
-const fs = require("fs");
-const YAML = require("yamljs");
-const chalk = require("chalk");
-const program = require("commander");
-const buildVersion = require("./package.json").version;
+import checker from "./index.mjs";
+import fs from "fs";
+import YAML from "yamljs";
+import chalk from "chalk";
+import { program } from "commander";
 
-// const alex = require('alex')
 
 function loader(filename) {
   const suffix = filename.split(".").pop().toLowerCase();
@@ -23,7 +22,7 @@ function loader(filename) {
 
 (async () => {
   program
-    .version(buildVersion)
+    .version("1.1.0")
     .option("-t, --text", "treat input as plain-text (not markdown)")
     .option("-l, --html", "treat input as html (not markdown)")
     .option("-d, --diff", "ignore unchanged lines (affects Travis only)")
@@ -36,12 +35,13 @@ function loader(filename) {
       "-f, --fields [fields]",
       "specify a comma separated list of field names to match"
     )
-    .arguments("[options] source-file")
-    .parse(process.argv);
+    .arguments("<string>", "[options] source-file")
+    .parse();
 
   if (program.args.length < 1) {
     return program.help();
   }
+
   const data = loader(program.args[0]);
 
   const programOpts = program.opts();
@@ -73,12 +73,12 @@ function loader(filename) {
 
   for (let result of results) {
     for (let error of result.errors) {
-      const before = result.plain.substring(0, error.location.start.offset);
+      const before = result.plain.substring(0, error.position.start.offset);
       const word = result.plain.substring(
-        error.location.start.offset,
-        error.location.end.offset
+        error.position.start.offset,
+        error.position.end.offset
       );
-      const after = result.plain.substring(error.location.end.offset);
+      const after = result.plain.substring(error.position.end.offset);
 
       console.log(`
 ${chalk.yellow(result.path)}

@@ -1,4 +1,4 @@
-var jp = require("jsonpath");
+import jp from "jsonpath";
 
 /**
  * Extracts all titles and descriptions from a specification
@@ -19,4 +19,4 @@ const extract = (document, fields = []) => {
   });
 };
 
-module.exports = extract;
+export default extract;
