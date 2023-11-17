@@ -1,5 +1,5 @@
-import extract from "./extract.mjs";
-import check from "./check.mjs";
+import extract from "./extract.js";
+import check from "./check.js";
 
 const checker = async function (input, fields = [], options = {}) {
   let checks = [];

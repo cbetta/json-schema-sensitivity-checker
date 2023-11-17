@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 ":" //# comment; exec /usr/bin/env node --experimental-modules "$0" "$@"
 
-import checker from "./index.mjs";
+import checker from "./index.js";
 import fs from "fs";
 import YAML from "yamljs";
 import chalk from "chalk";

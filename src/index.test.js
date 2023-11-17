@@ -1,4 +1,4 @@
-import checker from "./index.mjs";
+import checker from "./index.js";
 
 const json = [
   {

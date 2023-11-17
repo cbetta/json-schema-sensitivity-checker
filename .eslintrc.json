@@ -1,9 +1,0 @@
-{
-    "plugins": [
-        "prettier"
-    ],
-    "rules": {
-        "prettier/prettier": "error",
-        "curly": ["error", "all"]
-    }
-}
